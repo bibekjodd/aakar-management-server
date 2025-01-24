@@ -6,3 +6,5 @@ export const MILLIS = {
   WEEK: 7 * 24 * 60 * 60 * 1000,
   MONTH: 30 * 24 * 60 * 60 * 1000
 };
+
+export const userRoles = ['student', 'teacher', 'admin'] as const;

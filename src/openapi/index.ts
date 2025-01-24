@@ -3,6 +3,7 @@ import packageJson from 'package.json';
 import { createDocument } from 'zod-openapi';
 import { authDoc } from './auth.doc';
 import { defaultDoc } from './default.doc';
+import { usersDoc } from './users.doc';
 
 export const openApiSpecs = createDocument({
   info: {
@@ -13,7 +14,8 @@ export const openApiSpecs = createDocument({
   openapi: '3.1.0',
   paths: {
     ...defaultDoc,
-    ...authDoc
+    ...authDoc,
+    ...usersDoc
   }
 });
 

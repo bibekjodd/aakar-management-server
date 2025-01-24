@@ -1,3 +1,4 @@
+import { userRoles } from '@/lib/constants';
 import { createId } from '@paralleldrive/cuid2';
 import { getTableColumns } from 'drizzle-orm';
 import { index, integer, primaryKey, sqliteTable, uniqueIndex } from 'drizzle-orm/sqlite-core';
@@ -11,10 +12,7 @@ export const users = sqliteTable(
     name: t.text({ length: 30 }).notNull(),
     email: t.text({ length: 50 }).notNull(),
     password: t.text({ length: 100 }),
-    role: t
-      .text({ enum: ['user', 'admin'] })
-      .notNull()
-      .default('user'),
+    role: t.text({ enum: userRoles }).notNull().default('student'),
     image: t.text({ length: 300 }),
     phone: t.integer(),
     lastOnline: t

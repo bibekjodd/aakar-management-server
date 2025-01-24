@@ -14,6 +14,7 @@ import { GoogleStrategy } from './passport/google.strategy';
 import { LocalStrategy } from './passport/local.strategy';
 import { serializer } from './passport/serializer';
 import { authRoute } from './routes/auth.route';
+import { usersRoute } from './routes/users.route';
 
 const app = express();
 validateEnv();
@@ -43,6 +44,7 @@ app.get('/', async (req, res) => {
 
 /* --------- routes --------- */
 app.use('/api/auth', authRoute);
+app.use('/api/users', usersRoute);
 app.get('/doc', (req, res) => {
   res.json(openApiSpecs);
 });
