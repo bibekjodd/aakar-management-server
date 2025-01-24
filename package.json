@@ -1,19 +1,23 @@
 {
-  "name": "express-server",
+  "name": "aakar-management-server",
   "version": "1.0.0",
-  "main": "dist/app.js",
-  "type": "module",
-  "scripts": {
-    "lint": "tsc --noEmit && eslint .",
-    "start": "node dist/app.js",
-    "dev": "tsx watch src/app.ts",
-    "build": "esbuild src/app.ts --bundle --platform=node --packages=external --outfile=dist/app.js --format=esm",
-    "format": "prettier --write ."
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "esbuild src/app.ts --bundle --platform=node --packages=external --outfile=dist/app.js --format=esm",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "dev": "tsx watch src/app.ts",
+    "format": "prettier --write .",
+    "lint": "tsc --noEmit && eslint src",
+    "start": "node dist/app.js"
+  },
   "dependencies": {
     "@libsql/client": "^0.14.0",
     "@paralleldrive/cuid2": "^2.2.2",

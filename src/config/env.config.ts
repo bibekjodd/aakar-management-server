@@ -30,7 +30,11 @@ const envSchema = z
       .optional()
       .transform((val) => (val || '').split(' ')),
 
-    SESSION_SECRET: z.string()
+    SESSION_SECRET: z.string(),
+
+    SMTP_SERVICE: z.string(),
+    SMTP_MAIL: z.string(),
+    SMTP_PASS: z.string()
   })
   .readonly();
 

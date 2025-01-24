@@ -1,6 +1,7 @@
 import { apiReference } from '@scalar/express-api-reference';
 import packageJson from 'package.json';
 import { createDocument } from 'zod-openapi';
+import { authDoc } from './auth.doc';
 import { defaultDoc } from './default.doc';
 
 export const openApiSpecs = createDocument({
@@ -11,7 +12,8 @@ export const openApiSpecs = createDocument({
   },
   openapi: '3.1.0',
   paths: {
-    ...defaultDoc
+    ...defaultDoc,
+    ...authDoc
   }
 });
 

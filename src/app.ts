@@ -1,11 +1,19 @@
 import 'colors';
+import cookieSession from 'cookie-session';
+import cors from 'cors';
 import express from 'express';
 import morgan from 'morgan';
+import passport from 'passport';
 import { env, validateEnv } from './config/env.config';
 import { NotFoundException } from './lib/exceptions';
-import { devConsole } from './lib/utils';
+import { devConsole, sessionOptions } from './lib/utils';
 import { handleErrorRequest } from './middlewares/handle-error-request';
+import { handleSessionRegenerate } from './middlewares/handle-session-regenerate';
 import { openApiSpecs, serveApiReference } from './openapi';
+import { GoogleStrategy } from './passport/google.strategy';
+import { LocalStrategy } from './passport/local.strategy';
+import { serializer } from './passport/serializer';
+import { authRoute } from './routes/auth.route';
 
 const app = express();
 validateEnv();
@@ -14,6 +22,16 @@ app.use(express.urlencoded({ extended: true }));
 if (env.NODE_ENV === 'development') {
   app.use(morgan('common'));
 }
+app.use(cors({ origin: env.FRONTEND_URLS, credentials: true }));
+app.enable('trust proxy');
+app.use(cookieSession(sessionOptions));
+app.use(handleSessionRegenerate);
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use('google', GoogleStrategy);
+passport.use('local', LocalStrategy);
+serializer();
 
 app.get('/', async (req, res) => {
   res.json({
@@ -24,6 +42,7 @@ app.get('/', async (req, res) => {
 });
 
 /* --------- routes --------- */
+app.use('/api/auth', authRoute);
 app.get('/doc', (req, res) => {
   res.json(openApiSpecs);
 });
