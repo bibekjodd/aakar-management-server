@@ -9,7 +9,7 @@ import { usersDoc } from './users.doc';
 
 export const openApiSpecs = createDocument({
   info: {
-    title: 'Express Server',
+    title: 'Aakar Management',
     version: packageJson.version,
     description: 'Express server with scalar for openapi documentation'
   },
@@ -33,6 +33,6 @@ export const serveApiReference = apiReference({
     clientKey: 'fetch'
   },
   metaData: {
-    title: 'Express Server Api Reference'
+    title: 'Aakar Management Server Api Reference'
   }
 });
