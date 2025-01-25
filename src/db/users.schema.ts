@@ -13,6 +13,7 @@ export const users = sqliteTable(
     email: t.text({ length: 50 }).notNull(),
     password: t.text({ length: 100 }),
     role: t.text({ enum: userRoles }).notNull().default('student'),
+    batch: t.text('batch'),
     image: t.text({ length: 300 }),
     phone: t.integer(),
     lastOnline: t

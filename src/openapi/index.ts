@@ -1,6 +1,7 @@
 import { apiReference } from '@scalar/express-api-reference';
 import packageJson from 'package.json';
 import { createDocument } from 'zod-openapi';
+import { assignmentsDoc } from './assignments.doc';
 import { authDoc } from './auth.doc';
 import { defaultDoc } from './default.doc';
 import { notificationsDoc } from './notifications.doc';
@@ -17,6 +18,7 @@ export const openApiSpecs = createDocument({
     ...defaultDoc,
     ...authDoc,
     ...usersDoc,
+    ...assignmentsDoc,
     ...notificationsDoc
   }
 });

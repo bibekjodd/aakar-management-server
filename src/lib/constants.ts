@@ -8,3 +8,14 @@ export const MILLIS = {
 };
 
 export const userRoles = ['student', 'teacher', 'admin'] as const;
+
+export const prefs = {
+  assignment: {
+    maxSubmissionDays: 30,
+    maxLinksOnAssignment: 5,
+    maxTasks: 20,
+    maxTasksTitleLength: 1000,
+    maxTasksRemarksLength: 1000,
+    maxSolutionLength: 2000
+  }
+} as const;

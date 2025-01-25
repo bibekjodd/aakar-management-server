@@ -13,6 +13,7 @@ import { openApiSpecs, serveApiReference } from './openapi';
 import { GoogleStrategy } from './passport/google.strategy';
 import { LocalStrategy } from './passport/local.strategy';
 import { serializer } from './passport/serializer';
+import { assignmentsRoute } from './routes/assignments.route';
 import { authRoute } from './routes/auth.route';
 import { notificationsRoute } from './routes/notifications.route';
 import { usersRoute } from './routes/users.route';
@@ -46,6 +47,7 @@ app.get('/', async (req, res) => {
 /* --------- routes --------- */
 app.use('/api/auth', authRoute);
 app.use('/api/users', usersRoute);
+app.use('/api/assignments', assignmentsRoute);
 app.use('/api/notifications', notificationsRoute);
 app.get('/doc', (req, res) => {
   res.json(openApiSpecs);
